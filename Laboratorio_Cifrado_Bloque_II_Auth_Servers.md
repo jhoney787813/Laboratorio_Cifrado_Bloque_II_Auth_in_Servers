@@ -180,8 +180,6 @@ node radius-auth.js
 
 # **📍 PARTE 3: Verificación del Cifrado con Wireshark**  
 
-
-
 🛠️ Instalación de Wireshark en macOS
 Wireshark es una herramienta de análisis de tráfico de red que nos permitirá verificar si los datos están cifrados en la comunicación con Kerberos y RADIUS.
 
@@ -212,16 +210,28 @@ Debe mostrar permisos como:
 ```plaintext
         wireshark --version
  ```
+📌 3️⃣ Ejecutar Wireshark
+Para abrir Wireshark, puedes ejecutar:
 
+ ```bash
+       open /Applications/Wireshark.app
 
+ ```
+O simplemente buscar "Wireshark" en Spotlight (Cmd + Espacio y escribir "Wireshark").
 
-
-
-
-🔹 Ejecuta el siguiente comando en la terminal (SIN PRIVILEGIOS DEL SISTEMA):
-
-1. **Abrir Wireshark** y comenzar captura de tráfico.  
-2. Aplicar filtro para autenticación:  
+📌 4️⃣ Capturar Tráfico de Kerberos y RADIUS
+Abrir Wireshark.
+Seleccionar la interfaz de red (Wi-Fi o Ethernet).
+Usar los siguientes filtros para capturar solo tráfico relevante:
+## Kerberos:
+  ```plaintext
+           kerberos 
+   ```
+## RADIUS:
+ ```plaintext
+       radius
+   
+2. Aplicar filtroS MULTIPLES para autenticación:  
    ```plaintext
    kerberos || radius
    ```
