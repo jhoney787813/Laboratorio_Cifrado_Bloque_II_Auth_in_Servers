@@ -1,0 +1,197 @@
+# **IMPLEMENTACIÓN DE CIFRADO EN BLOQUE EN SERVIDORES DE AUTENTICACIÓN**
+
+## **Universidad Politécnico Grancolombiano**  
+**Especialización en Seguridad de la Información**  
+**Materia:** Criptografía Asimétrica  
+**Docente:** José Alfonso Valencia Rodríguez  
+**Autor:** Jhon Edison Hincapié  
+**Año:** 2025  
+
+---
+
+# **🔐 Implementación de Cifrado en Bloque en Servidores de Autenticación en macOS**  
+
+## **📌 Introducción**  
+En este laboratorio, implementaremos **cifrado en bloque** en servidores de autenticación **(Kerberos y RADIUS con EAP-TLS)** en macOS. También se integrará **Node.js** para probar la autenticación en estos sistemas.  
+
+---
+
+# **📖 Definición de los Métodos de Autenticación**  
+
+## **🔹 Kerberos**  
+Es un protocolo de autenticación basado en un modelo de confianza centralizado que utiliza **tickets cifrados** para autenticar usuarios sin transmitir credenciales en texto claro. Su principal ventaja es el uso de **cifrado simétrico (AES-256)** y la reducción de exposición de contraseñas en la red.  
+
+## **🔹 RADIUS (Remote Authentication Dial-In User Service)**  
+Es un protocolo de autenticación que permite validar credenciales de usuarios remotos en redes empresariales, VPNs y servicios de acceso a Internet. Utiliza **EAP-TLS** para realizar autenticación segura con certificados digitales y soporta **cifrado AES** para proteger la comunicación.  
+
+---
+
+# **🎯 Justificación del Uso de Cada Método**  
+
+| Método      | Uso Recomendado | Ventajas | Desventajas |
+|------------|----------------|----------|-------------|
+| **Kerberos** | Entornos empresariales con dominios centralizados (Active Directory) | ✅ Seguridad con cifrado AES <br> ✅ Tickets en lugar de contraseñas | ❌ Requiere infraestructura compleja |
+| **RADIUS** | Redes inalámbricas, VPNs, acceso remoto | ✅ Integración con múltiples sistemas <br> ✅ Soporta autenticación multifactor | ❌ Dependencia de servidores externos |  
+
+**Recomendación:**  
+- **Usar Kerberos** cuando se necesite un **control de autenticación centralizado** dentro de una organización.  
+- **Usar RADIUS** para **redes empresariales, VPNs o autenticación remota** con dispositivos móviles y sistemas distribuidos.  
+
+---
+
+# **📍 PARTE 1: Instalación y Configuración de Kerberos**  
+
+## **🛠 Requisitos Previos**  
+- macOS Ventura o superior  
+- Instalación de paquetes necesarios con Homebrew  
+
+### **1️⃣ Instalación de Kerberos**  
+```bash
+brew install krb5
+echo 'export PATH="/usr/local/opt/krb5/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+### **2️⃣ Configuración de Kerberos con Cifrado AES**  
+Editar el archivo de configuración `/etc/krb5.conf`:  
+```plaintext
+[libdefaults]
+    default_realm = EMPRESA.COM
+    default_tkt_enctypes = aes256-cts-hmac-sha1-96
+    default_tgs_enctypes = aes256-cts-hmac-sha1-96
+```
+
+### **3️⃣ Creación de Usuarios y Tickets**  
+```bash
+sudo kdb5_util create -s
+sudo kadmin.local
+addprinc admin@EMPRESA.COM
+addprinc usuario@EMPRESA.COM
+```
+
+### **4️⃣ Prueba de Autenticación con Node.js**  
+#### ✅ Instalación de Dependencias  
+```bash
+npm init -y
+npm install kerberos
+```
+
+#### ✅ Script para Autenticación en Kerberos (`kerberos-auth.js`)  
+```javascript
+const kerberos = require('kerberos');
+
+async function authenticate(username, password) {
+    try {
+        const client = await kerberos.initializeClient(`${username}@EMPRESA.COM`, { password });
+        console.log("✅ Autenticación exitosa en Kerberos");
+    } catch (err) {
+        console.error("❌ Error en autenticación:", err.message);
+    }
+}
+
+authenticate("usuario", "contraseñaCorrecta");
+```
+
+Ejecutar:  
+```bash
+node kerberos-auth.js
+```
+
+**Salida esperada:**  
+✔ `✅ Autenticación exitosa en Kerberos`  
+❌ `❌ Error en autenticación: Client not found in Kerberos database`  
+
+---
+
+# **📍 PARTE 2: Instalación y Configuración de FreeRADIUS**  
+
+### **1️⃣ Instalación de FreeRADIUS**  
+```bash
+brew install freeradius-server
+```
+
+### **2️⃣ Configuración de FreeRADIUS con AES**  
+Editar `/usr/local/etc/raddb/mods-available/eap`:  
+```plaintext
+tls {
+    cipher_list = "AES256-SHA"
+}
+```
+
+### **3️⃣ Creación de Usuarios en FreeRADIUS**  
+Editar `/usr/local/etc/raddb/users`:  
+```plaintext
+usuario Cleartext-Password := "contraseña123"
+```
+
+### **4️⃣ Prueba de Autenticación con Node.js**  
+#### ✅ Instalación de Dependencias  
+```bash
+npm install radius
+```
+
+#### ✅ Script para Autenticación en FreeRADIUS (`radius-auth.js`)  
+```javascript
+const dgram = require('dgram');
+const radius = require('radius');
+
+const secret = "mysecurekey";
+const user = "usuario";
+const pass = "contraseña123";
+const server = "127.0.0.1";
+const port = 1812;
+
+const packet = radius.encode({
+    code: "Access-Request",
+    secret: secret,
+    attributes: [
+        ["User-Name", user],
+        ["User-Password", pass]
+    ]
+});
+
+const client = dgram.createSocket("udp4");
+client.send(packet, 0, packet.length, port, server, (err) => {
+    if (err) console.error("Error:", err);
+    else console.log("✅ Solicitud enviada a RADIUS");
+});
+
+client.on("message", (msg) => {
+    const response = radius.decode({ packet: msg, secret: secret });
+    if (response.code === "Access-Accept") {
+        console.log("✅ Autenticación exitosa en RADIUS");
+    } else {
+        console.log("❌ Acceso denegado");
+    }
+    client.close();
+});
+```
+
+Ejecutar:  
+```bash
+node radius-auth.js
+```
+
+**Salida esperada:**  
+✔ `✅ Autenticación exitosa en RADIUS`  
+❌ `❌ Acceso denegado`  
+
+---
+
+# **📍 PARTE 3: Verificación del Cifrado con Wireshark**  
+1. **Abrir Wireshark** y comenzar captura de tráfico.  
+2. Aplicar filtro para autenticación:  
+   ```plaintext
+   kerberos || radius
+   ```
+3. **Verificar que los datos están cifrados con AES**.  
+
+---
+
+# **📌 Conclusiones**  
+✔ **Kerberos** protege credenciales con **AES-256**, previniendo ataques de intermediario.  
+✔ **RADIUS** permite autenticación remota con cifrado AES seguro.  
+✔ **Node.js** facilita la integración de autenticación en sistemas modernos.  
+✔ **Los resultados demuestran autenticación segura y tráfico cifrado.**  
+
+🚀 **Este laboratorio proporciona una guía práctica para implementar servidores de autenticación con cifrado en bloque en macOS.**  
