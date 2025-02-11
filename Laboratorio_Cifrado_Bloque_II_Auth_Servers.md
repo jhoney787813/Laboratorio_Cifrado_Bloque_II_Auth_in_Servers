@@ -179,6 +179,47 @@ node radius-auth.js
 ---
 
 # **📍 PARTE 3: Verificación del Cifrado con Wireshark**  
+
+
+
+🛠️ Instalación de Wireshark en macOS
+Wireshark es una herramienta de análisis de tráfico de red que nos permitirá verificar si los datos están cifrados en la comunicación con Kerberos y RADIUS.
+
+📌 1️⃣ Instalación con Homebrew
+La forma más sencilla de instalar Wireshark en macOS es utilizando Homebrew.
+
+📌 2️⃣ Habilitar Captura de Paquetes sin Privilegios de Root
+Por defecto, en macOS, Wireshark necesita permisos de superusuario para capturar paquetes en interfaces de red. Para evitar esto, ejecuta:
+ ```bash
+sudo chmod +x /Applications/Wireshark.app/Contents/MacOS/dumpcap
+sudo chown root:admin /Applications/Wireshark.app/Contents/MacOS/dumpcap
+sudo chmod 755 /Applications/Wireshark.app/Contents/MacOS/dumpcap
+sudo chmod u+s /Applications/Wireshark.app/Contents/MacOS/dumpcap
+ ```
+🔹 Verifica que funciona sin sudo:
+
+ ```bash
+        ls -l /Applications/Wireshark.app/Contents/MacOS/dumpcap
+ ```
+Debe mostrar permisos como:
+ ```bash
+        -rwsr-xr-x.
+ ```
+```plaintext
+    brew install --cask wireshark
+ ```
+🔹 Verifica la instalación:
+```plaintext
+        wireshark --version
+ ```
+
+
+
+
+
+
+🔹 Ejecuta el siguiente comando en la terminal (SIN PRIVILEGIOS DEL SISTEMA):
+
 1. **Abrir Wireshark** y comenzar captura de tráfico.  
 2. Aplicar filtro para autenticación:  
    ```plaintext
