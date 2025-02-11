@@ -28,6 +28,7 @@ En este laboratorio, implementaremos **cifrado en bloque** en servidores de aute
 
 ✔ Realizar pruebas de autenticación desde Node.js.
 
+
 # **📖 Definición de los Métodos de Autenticación**  
 
 ## **🔹 Kerberos**  
@@ -50,6 +51,21 @@ Es un protocolo de autenticación que permite validar credenciales de usuarios r
 - **Usar RADIUS** para **redes empresariales, VPNs o autenticación remota** con dispositivos móviles y sistemas distribuidos.  
 
 ---
+
+## 🛠 Requisitos Previos
+
+**Sistema:** macOS Ventura o superior, Tambien se podría utilizar **linux** o **kali Linux**
+
+**Software:**
+
+*MIT Kerberos (krb5)
+
+*FreeRADIUS
+
+*Node.js (brew install node)
+
+*Wireshark (opcional, para analizar tráfico)
+
 
 # **📍 PARTE 1: Instalación y Configuración de Kerberos**  
 
@@ -255,5 +271,6 @@ Usar los siguientes filtros para capturar solo tráfico relevante:
 ✔ **RADIUS** permite autenticación remota con cifrado AES seguro.  
 ✔ **Node.js** facilita la integración de autenticación en sistemas modernos.  
 ✔ **Los resultados demuestran autenticación segura y tráfico cifrado.**  
+✔ Las pruebas exitosas y fallidas validan la seguridad de la configuración.
 
-🚀 **Este laboratorio proporciona una guía práctica para implementar servidores de autenticación con cifrado en bloque en macOS.**  
+🚀 **Este laboratorio proporciona una guía práctica para implementar servidores de autenticación con cifrado en bloque en utilizando Node.js para autenticación en servidores de seguridad.**  
