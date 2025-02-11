@@ -14,6 +14,8 @@
 ## **📌 Introducción**  
 En este laboratorio, implementaremos **cifrado en bloque** en servidores de autenticación **(Kerberos y RADIUS con EAP-TLS)** en macOS. También se integrará **Node.js** para probar la autenticación en estos sistemas.  
 
+[-> Ver Porque Cifrar en bloque Kerberos y Radius ](https://github.com/jhoney787813/Laboratorio_Cifrado_Bloque_II_Auth_in_Servers/blob/main/importancia_del_cifrado_com_kerberos_y_radius.md)
+
 ---
 
 # **📖 Definición de los Métodos de Autenticación**  
