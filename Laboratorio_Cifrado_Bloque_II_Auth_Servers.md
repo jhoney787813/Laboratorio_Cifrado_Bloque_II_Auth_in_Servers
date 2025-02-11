@@ -18,6 +18,16 @@ En este laboratorio, implementaremos **cifrado en bloque** en servidores de aute
 
 ---
 
+## 🎯 Objetivos
+
+✔ Configurar Kerberos con cifrado AES-256.
+
+✔ Configurar FreeRADIUS con cifrado en bloque AES.
+
+✔ Integrar Node.js para autenticación en Kerberos y RADIUS.
+
+✔ Realizar pruebas de autenticación desde Node.js.
+
 # **📖 Definición de los Métodos de Autenticación**  
 
 ## **🔹 Kerberos**  
