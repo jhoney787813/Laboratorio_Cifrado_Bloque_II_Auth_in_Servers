@@ -215,7 +215,6 @@ Para abrir Wireshark, puedes ejecutar:
 
  ```bash
        open /Applications/Wireshark.app
-
  ```
 O simplemente buscar "Wireshark" en Spotlight (Cmd + Espacio y escribir "Wireshark").
 
@@ -230,7 +229,7 @@ Usar los siguientes filtros para capturar solo tráfico relevante:
 ## RADIUS:
  ```plaintext
        radius
-   
+  ``` 
 2. Aplicar filtroS MULTIPLES para autenticación:  
    ```plaintext
    kerberos || radius
