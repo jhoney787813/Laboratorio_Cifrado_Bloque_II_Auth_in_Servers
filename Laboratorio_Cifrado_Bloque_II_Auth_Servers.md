@@ -275,6 +275,8 @@ Usar los siguientes filtros para capturar solo tráfico relevante:
 
 🚀 **Este laboratorio proporciona una guía práctica para implementar servidores de autenticación con cifrado en bloque en utilizando Node.js para autenticación en servidores de seguridad.**  
 
+## 🔐 ¡Laboratorio completado! 🎉
+
 ## ¿Quieres desinstalar los servidores instalados (KERBEROS,FreeRADIUS) ?
 
 [-> Como desintalar los servidores (KERBEROS,FreeRADIUS)](https://github.com/jhoney787813/Laboratorio_Cifrado_Bloque_II_Auth_in_Servers/blob/main/Desinstalacion_Kerberos_FreeRADIUS.md)
