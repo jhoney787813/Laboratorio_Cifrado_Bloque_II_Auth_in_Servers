@@ -9,6 +9,6 @@ El cifrado en bloque es una técnica fundamental para proteger datos sensibles e
 
 [-> Ver Porque Cifrar en bloque Kerberos y Radius ](https://github.com/jhoney787813/Laboratorio_Cifrado_Bloque_II_Auth_in_Servers/blob/main/importancia_del_cifrado_com_kerberos_y_radius.md)
 
-[-> Video Completo de explicación practica]()
+[-> Video Completo de explicación practica](https://youtu.be/3OX7Kjzk9FE)
 
 [Jhon E -> GitHub Profile](https://github.com/jhoney787813/)
