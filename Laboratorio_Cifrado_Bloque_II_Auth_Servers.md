@@ -1,4 +1,4 @@
-# **IMPLEMENTACIÓN DE CIFRADO EN BLOQUE EN SERVIDORES DE AUTENTICACIÓN (Kerberos, RADIUS)**
+# **IMPLEMENTACIÓN DE CIFRADO EN BLOQUE EN SERVIDORES DE AUTENTICACIÓN (KERBEROS, RADIUS)**
 
 ## **Universidad Politécnico Grancolombiano**  
 **Especialización en Seguridad de la Información**  
