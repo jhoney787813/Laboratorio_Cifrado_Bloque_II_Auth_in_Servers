@@ -281,9 +281,38 @@ Usar los siguientes filtros para capturar solo tráfico relevante:
 
 [-> Como desintalar los servidores (KERBEROS,FreeRADIUS)](https://github.com/jhoney787813/Laboratorio_Cifrado_Bloque_II_Auth_in_Servers/blob/main/Desinstalacion_Kerberos_FreeRADIUS.md)
 
+## 📚 Referencias
 
+# 🔐 Cifrado en Bloque y Seguridad de Autenticación
 
+Menezes, A. J., van Oorschot, P. C., & Vanstone, S. A. (2018). Handbook of Applied Cryptography. CRC Press.
+Stallings, W. (2020). Cryptography and Network Security: Principles and Practice (8th ed.). Pearson.
+Schneier, B. (2015). Applied Cryptography: Protocols, Algorithms, and Source Code in C. John Wiley & Sons.
+National Institute of Standards and Technology (NIST). (2001). Advanced Encryption Standard (AES). https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf
 
+# 🛡️ Kerberos y su implementación
+
+Neuman, C., & Ts'o, T. (1994). Kerberos: An Authentication Service for Computer Networks. IEEE Communications Magazine, 32(9), 33–38.
+
+MIT Kerberos Consortium. (2023). Kerberos: The Network Authentication Protocol. https://web.mit.edu/kerberos/
+
+Microsoft. (2024). How Kerberos Authentication Works. https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview
+
+# 📡 RADIUS y su seguridad
+
+Rigney, C., Willens, S., Rubens, A., & Simpson, W. (2000). Remote Authentication Dial In User Service (RADIUS). RFC 2865. https://datatracker.ietf.org/doc/html/rfc2865
+
+Open RADIUS Project. (2023). FreeRADIUS: The World's Most Popular RADIUS Server. https://freeradius.org/
+
+Cisco Systems. (2023). RADIUS Authentication and Authorization Configuration Guide. https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/sec_usr_rad/configuration/15-mt/sec-usr-rad-15-mt-book.html
+
+# 🖥️ Implementación Práctica y Laboratorio en macOS
+
+**Apple Developer.** (2024). Configuring Kerberos on macOS. https://developer.apple.com/documentation/security/configuring-kerberos-authentication
+
+**Homebrew Documentation.** (2024). Installing FreeRADIUS on macOS. https://formulae.brew.sh/formula/freeradius-server
+
+**Wireshark Foundation. (2023)**. Capturing and Analyzing Authentication Packets. https://www.wireshark.org/docs/
 
 [Jhon E -> GitHub Profile](https://github.com/jhoney787813/)
 
