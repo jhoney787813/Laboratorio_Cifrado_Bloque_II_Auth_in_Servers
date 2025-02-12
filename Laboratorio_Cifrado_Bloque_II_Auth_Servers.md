@@ -96,6 +96,10 @@ sudo kadmin.local
 addprinc admin@EMPRESA.COM
 addprinc usuario@EMPRESA.COM
 ```
+o ejecutar
+```bash
+        sudo /usr/local/opt/krb5/sbin/kdb5_util create -s
+```
 
 ### **4️⃣ Prueba de Autenticación con Node.js**  
 #### ✅ Instalación de Dependencias  
