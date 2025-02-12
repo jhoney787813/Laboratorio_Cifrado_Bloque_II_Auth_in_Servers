@@ -100,6 +100,27 @@ o ejecutar
 ```bash
         sudo /usr/local/opt/krb5/sbin/kdb5_util create -s
 ```
+Abrir la consola de administración de Kerberos:
+```bash
+    sudo /usr/local/opt/krb5/sbin/kadmin.local
+```
+Agregar un administrador principal:
+
+```bash
+    addprinc admin@EMPRESA.COM
+```
+Agregar un usuario:
+```bash
+    addprinc usuario@EMPRESA.COM
+```
+
+🔹 Verificar que Kerberos Funciona
+```bash
+klist
+```
+```bash
+    kinit usuario@EMPRESA.COM
+```
 
 ### **4️⃣ Prueba de Autenticación con Node.js**  
 #### ✅ Instalación de Dependencias  
